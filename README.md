@@ -1,29 +1,27 @@
 # Clean up your Claude
 
-If you've used Claude Code for a while, your setup has probably drifted. A skill you
-wrote a year ago, a plugin that injects text at session start, a "never suggest
-alternatives" line, a lower effort setting you forgot about. Each one made sense at the
-time. Together they fork your Claude away from the default experience, which keeps
-getting better while your overrides stay frozen.
+If you've used Claude Code (or other LLM) for a while, your setup has probably drifted and accumulated customizations you can no longer remember. 
+A skill you wrote a year ago, a plugin that injects text at session start, an overly zealous directive to "never suggest alternatives", a lower effort setting you forgot about when you were desperate to save tokens. 
+Each one made sense at the time, but together they fork your Claude away from the default experience, which keeps getting better while your overrides keep you locked in the past.
 
-This repo is one prompt that audits that drift and helps you undo it. It runs once,
-reports first, and changes nothing until you approve each item. It doesn't stay installed.
+This repo is one prompt that audits that drift and helps you undo it. 
+It runs once, reports first, and changes nothing until you approve each item. It doesn't stay installed (of course!)
 
 ## The idea
 
-Treat vanilla as the baseline. Everything that loads in every session has to earn its
-place. When something doesn't, prefer, in order:
+Treat plain vanilla install as the baseline. 
+Everything that loads in every session has to earn its place. When something should no longer apply, prefer, in order:
 
-1. **Remove it.**
+1. **Remove it.** nothing like a little rm to free the soul
 2. **Scope it** to the projects that need it (enable plugins in a project's
    `.claude/settings.json` rather than globally).
 3. **Make it manual-only.** `disable-model-invocation: true` in a skill's frontmatter means
    it runs only when you type `/name`, and its description stops loading into context.
-4. **Rewrite it.** This is the last resort.
+4. **Rewrite it.** as the last resort.
 
-What's worth keeping globally is usually small: facts about you and your tools that
-Claude can't infer. "Use the cf CLI unless the project has a Wrangler config" is a good
-global line. A default tech stack is not.
+What's worth keeping globally is usually small: facts about you and your tools that Claude can't infer. 
+"Use the cf CLI unless the project has a Wrangler config" is a good global line. 
+A default tech stack is not.
 
 ## Use it
 
@@ -34,8 +32,7 @@ global line. A default tech stack is not.
 Before you decide, compare against vanilla: run the same task with `claude --bare`, or
 with plugins disabled and `~/.claude/skills` moved aside.
 
-**Privacy:** the report lists your skills, plugins and settings, and may quote your
-instructions. Don't post it publicly without reading it first.
+**Privacy:** the report lists your skills, plugins and settings, and may quote your instructions. Don't post it publicly without reading it first.
 
 ## Optional: rerun it as a command
 
