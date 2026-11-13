@@ -6,7 +6,8 @@ disable-model-invocation: true
 
 Restore my Claude setup from an Unfork backup.
 
-1. List the folders matching `~/.claude/backups/unfork-*`, newest first, with the date and
+1. List the folders matching `backups/unfork-*` in the config folder (`~/.claude`,
+   `$CLAUDE_CONFIG_DIR`, or a folder I name), newest first, with the date and
    what each `MANIFEST.md` says was changed. If there are none, say so and stop.
 2. Ask which backup to restore. Default to the newest one, and offer to restore all of it
    or only some items.

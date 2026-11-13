@@ -22,11 +22,17 @@ Rewriting is the last resort, not the first.
 
 ## 1. Inventory (Claude Code)
 
-List everything that shapes Claude's behaviour, with file paths:
-- `~/.claude/CLAUDE.md` and anything it imports (and `~/CLAUDE.md` or `AGENTS.md` if present)
-- `~/.claude/skills/` (including any `synced/` folder), `agents/`, `commands/`, `output-styles/`
-- `~/.claude/settings.json` and `settings.local.json`: permissions, hooks, env, model,
-  effort and any other value that differs from the default
+The config folder is `~/.claude`, or `$CLAUDE_CONFIG_DIR` if that's set. If I name a
+different folder (for example a copy of an old setup), audit that folder instead and
+treat it as a test copy: never run `claude plugin` commands for it, and only edit files
+inside it.
+
+List everything that shapes Claude's behaviour, with file paths (relative to the config
+folder unless noted):
+- `CLAUDE.md` and anything it imports (and `~/CLAUDE.md` or `AGENTS.md` if present)
+- `skills/` (including any `synced/` folder), `agents/`, `commands/`, `output-styles/`
+- `settings.json` and `settings.local.json`: permissions, hooks, env, model, effort and
+  any other value that differs from the default
 - Installed plugins: their skills, agents and hooks (especially SessionStart and
   UserPromptSubmit hooks that inject text or send data), and whether each is enabled
   globally or per project. `claude plugin details <name>` shows a plugin's components and
@@ -36,8 +42,10 @@ List everything that shapes Claude's behaviour, with file paths:
   skills that load twice under different names.
 - The auto-memory folder for my home directory, if it has content
 
-Before the report, ask me to run `/context` and paste the result, so we have a "before"
-number for what loads into every session.
+Measure what loads into every session by running `claude -p "/context"` from my home
+directory. It starts a fresh session, so it shows the startup cost rather than this
+conversation. Keep the totals for memory files, skills, and MCP and system tools as the
+"before" numbers. (This measures the active setup, so skip it when auditing a test copy.)
 
 ## 2. Baseline
 
@@ -78,12 +86,13 @@ Then stop and wait for me to approve changes one by one.
 
 ## 5. When I approve changes
 
-- First copy every file you will touch into `~/.claude/backups/unfork-<timestamp>/`, and
-  write a `MANIFEST.md` there listing each original path and each plugin's enabled state.
+- First copy every file you will touch into `backups/unfork-<timestamp>/` inside the
+  config folder, and write a `MANIFEST.md` there listing each original path and each
+  plugin's enabled state.
 - Move retired skills and files into that folder. Don't delete them.
 - Disable plugins with `claude plugin disable` rather than uninstalling them, unless I
   ask to uninstall. Never edit files inside a plugin's cache.
 - Leave edits to claude.ai settings to me, and tell me where to make them.
-- Afterwards, ask me to run `/context` again, and show the before and after.
+- Afterwards, run `claude -p "/context"` again and show the before and after side by side.
 - Tell me the backup folder and how to undo (the `/unfork:restore` command if it's
   installed, otherwise copy the files back by hand).
