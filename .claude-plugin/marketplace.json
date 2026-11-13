@@ -1,12 +1,8 @@
 {
-  "name": "setup-drift-audit",
-  "description": "A manual-only audit for drift in a Claude Code setup.",
+  "name": "unfork",
+  "description": "Unfork: an audit for drift in a Claude setup.",
   "owner": { "name": "Egan Cheung" },
   "plugins": [
-    {
-      "name": "setup-drift-audit",
-      "source": "./",
-      "description": "A manual-only audit that helps you remove or scope the overrides that have drifted your Claude Code setup away from its defaults."
-    }
+    { "name": "unfork", "source": "./", "description": "Audits your Claude setup (global instructions, skills, plugins, hooks and settings) for overrides that have drifted it away from the defaults, and helps you remove, scope or simplify each one, with backups and undo." }
   ]
 }

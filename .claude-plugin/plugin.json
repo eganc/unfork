@@ -1,6 +1,9 @@
 {
-  "name": "setup-drift-audit",
-  "description": "A manual-only audit that helps you remove or scope the overrides that have drifted your Claude Code setup away from its defaults.",
-  "author": { "name": "Egan Cheung" },
-  "version": "0.1.0"
+  "name": "unfork",
+  "displayName": "Unfork",
+  "version": "0.2.0",
+  "description": "Audits your Claude setup (global instructions, skills, plugins, hooks and settings) for overrides that have drifted it away from the defaults, and helps you remove, scope or simplify each one, with backups and undo.",
+  "author": { "name": "Egan Cheung", "url": "https://github.com/eganc" },
+  "license": "MIT",
+  "homepage": "https://github.com/eganc/clean-up-your-claude"
 }

@@ -1,4 +1,4 @@
-# Clean up your Claude
+# Unfork: clean up your Claude
 
 If you've used Claude Code (or other LLM) for a while, your setup has probably drifted and accumulated customizations you can no longer remember. 
 A skill you wrote a year ago, a plugin that injects text at session start, an overly zealous directive to "never suggest alternatives", a lower effort setting you forgot about when you were desperate to save tokens. 
@@ -25,27 +25,42 @@ A default tech stack is not.
 
 ## Use it
 
-1. Open Claude Code in your home directory.
-2. Paste the contents of [`PROMPT.md`](PROMPT.md).
-3. Read the report, then approve or reject each change.
+Install the plugin in Claude Code:
 
-Before you decide, compare against vanilla: run the same task with `claude --bare`, or
-with plugins disabled and `~/.claude/skills` moved aside.
+```
+/plugin install unfork@unfork
+```
+
+(If that doesn't find it, add the marketplace first with `/plugin marketplace add eganc/clean-up-your-claude`.)
+
+Then run `/unfork:audit`, read the report, and approve or reject each change.
+Run `/context` before and after if you want to see how much stopped loading into every session.
+
+Both skills are manual-only, so they add nothing to your sessions until you call them.
+Installing a tool to remove tools would otherwise defeat the point.
+
+Rather not install anything? Paste [`PROMPT.md`](PROMPT.md) into Claude Code instead.
+
+Before you decide, compare against vanilla: run the same task in `claude --safe-mode`, which starts with all your customizations switched off.
+
+## Where it works
+
+- **Claude Code:** the full audit of `~/.claude` (instructions, skills, plugins, hooks, settings).
+- **Chat and Cowork:** Claude can't see your files there, so it reviews what it can see (your preferences, styles, project instructions and enabled skills) and tells you which settings to change.
+- **Other agents:** paste `PROMPT.md` into Codex or similar and it audits that agent's config instead.
+
+## Undo
+
+Before changing anything, the audit copies every file it will touch into `~/.claude/backups/unfork-<timestamp>/`.
+It moves things there instead of deleting them, and disables plugins rather than uninstalling them.
+Changed your mind? Run `/unfork:restore`.
+
+## What it reads and sends
+
+It reads your Claude config and fetches Anthropic's public docs to check its advice against them.
+Nothing else leaves your machine, and it stores nothing outside the backup folder.
 
 **Privacy:** the report lists your skills, plugins and settings, and may quote your instructions. Don't post it publicly without reading it first.
-
-## Optional: rerun it as a command
-
-If you want to rerun the audit every few months:
-
-```
-/plugin marketplace add eganc/clean-up-your-claude
-/plugin install setup-drift-audit@setup-drift-audit
-```
-
-Then run `/setup-drift-audit:cleanup-claude`. The skill is manual-only, so it adds
-nothing to your sessions until you call it. Installing a tool to remove tools would
-otherwise defeat the point.
 
 ## What it typically finds
 
