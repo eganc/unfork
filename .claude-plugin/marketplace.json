@@ -1,0 +1,12 @@
+{
+  "name": "setup-drift-audit",
+  "description": "A manual-only audit for drift in a Claude Code setup.",
+  "owner": { "name": "Egan Cheung" },
+  "plugins": [
+    {
+      "name": "setup-drift-audit",
+      "source": "./",
+      "description": "A manual-only audit that helps you remove or scope the overrides that have drifted your Claude Code setup away from its defaults."
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "setup-drift-audit",
+  "description": "A manual-only audit that helps you remove or scope the overrides that have drifted your Claude Code setup away from its defaults.",
+  "author": { "name": "Egan Cheung" },
+  "version": "0.1.0"
+}
