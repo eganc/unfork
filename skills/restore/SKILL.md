@@ -23,3 +23,5 @@ Restore my Claude setup from an Unfork backup.
 
 If I ran the cleanup in chat or Cowork, the changes were made in claude.ai settings, so
 nothing here can undo them. Tell me which settings pages to revisit instead.
+
+Folder to restore from, if I named one: $ARGUMENTS

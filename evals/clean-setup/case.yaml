@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: clean-setup
+description: A setup that is already close to vanilla. The audit should not invent work.
+tags: [audit, core]
+context:
+  scaffold_script: fixture.sh

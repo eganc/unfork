@@ -79,6 +79,8 @@ instructions. Don't post it publicly without reading it first.
 
 See [`EXAMPLE.md`](EXAMPLE.md) for an anonymised before/after from a real setup.
 
+The behaviour is tested with `claude plugin eval`; see [`evals/`](evals/README.md).
+
 ## Related
 
 Claude Code ships a built-in check, `/doctor prompt-audit` (v2.1.283 or later), for

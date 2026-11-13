@@ -1,7 +1,7 @@
 {
   "name": "unfork",
   "displayName": "Unfork",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Audits your Claude setup (global instructions, skills, plugins, hooks and settings) for overrides that have drifted it away from the defaults, and helps you remove, scope or simplify each one, with backups and undo.",
   "author": { "name": "Egan Cheung", "url": "https://github.com/eganc" },
   "license": "MIT",

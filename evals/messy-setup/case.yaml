@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: messy-setup
+description: A drifted setup with planted problems and two things worth keeping.
+tags: [audit, core]
+context:
+  scaffold_script: fixture.sh

@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: restore-backup
+description: A config with one Unfork backup. Restore should explain the plan and wait.
+tags: [restore, core]
+context:
+  scaffold_script: fixture.sh
