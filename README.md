@@ -39,7 +39,7 @@ Install the plugin in Claude Code:
 ```
 
 (If that doesn't find it, add the marketplace first with
-`/plugin marketplace add eganc/clean-up-your-claude`.)
+`/plugin marketplace add eganc/unfork`.)
 
 Then run `/unfork:audit`, read the report, and approve or reject each change. It measures
 how much loads into every session before and after, so you can see what you saved.
